@@ -2,19 +2,19 @@
 name: server-ip-port-radius-acct-params
 namespace: com.citrix.adc.commontypes
 version: "1.0"
-description: "This stylebook defines a typical server ip port information for Cisco ISE"
+description: "This stylebook defines a typical server ip port information for Radius accounting servers ISE"
 private: true
 schema-version: "1.0"
 parameters: 
    - 
       name:  ip
-      label: "ISE Server IP Address"
+      label: "Server IP Address"
       description: "Backend Radius Accounting Server IP"
       type: ipaddress
       required: true
    - 
       name: port
-      label: "ISE Server Port"
+      label: "Server Port"
       description: "Backend Radius Accounting Server Port"
       type: tcp-port
       default: 1813
