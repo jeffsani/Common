@@ -2,20 +2,20 @@
 name: server-ip-port-radius-auth-params
 namespace: com.citrix.adc.commontypes
 version: "1.0"
-description: "This stylebook defines a typical server ip port information for Cisco ISE"
+description: "This stylebook defines a typical server ip port information for Radius authentication servers"
 private: true
 schema-version: "1.0"
 parameters: 
    - 
       name:  ip
-      label: "ISE Server IP Address"
-      description: "Backend ISE Radius Server IP"
+      label: "Server IP Address"
+      description: "Backend Radius Authentication Server IP"
       type: ipaddress
       required: true
    - 
       name: port
-      label: "ISE Server Port"
-      description: "Backend ISE Radius Server Port"
+      label: "Server Port"
+      description: "Backend Radius Authentication Server Port"
       type: tcp-port
       default: 1812
    - 
