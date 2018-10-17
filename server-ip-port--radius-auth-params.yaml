@@ -2,7 +2,7 @@
 name: server-ip-port-radius-auth-params
 namespace: com.citrix.adc.commontypes
 version: "1.0"
-description: "This stylebook defines a typical server ip port information for Cisco ISE."
+description: "This stylebook defines a typical server ip port information for Cisco ISE"
 private: true
 schema-version: "1.0"
 parameters: 
