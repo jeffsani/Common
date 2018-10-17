@@ -1,5 +1,5 @@
 --- 
-name: server-ip-port-radius-auth-params2
+name: server-ip-port-radius-auth-params
 namespace: com.citrix.adc.commontypes
 version: "1.0"
 description: "This stylebook defines a typical server ip port information for Radius authentication servers"
