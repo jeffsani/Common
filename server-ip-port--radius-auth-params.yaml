@@ -16,7 +16,7 @@ parameters:
       name: port
       label: "ISE Server Port"
       description: "Backend ISE Radius Server Port"
-      type: udp-port
+      type: tcp-port
       default: 1812
    - 
       name: add-server
