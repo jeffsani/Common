@@ -1,0 +1,34 @@
+--- 
+name: server-ip-port-params-radius-auth
+namespace: com.citrix.adc.commontypes
+version: "1.0"
+description: "This stylebook defines a typical server ip port information for Cisco ISE."
+private: true
+schema-version: "1.0"
+parameters: 
+   - 
+      name:  ip
+      label: "ISE Server IP Address"
+      description: "Backend ISE Radius Server IP"
+      type: ipaddress
+      required: true
+   - 
+      name: port
+      label: "ISE Server Port"
+      description: "Backend ISE Radius Server Port"
+      type: udp-port
+      default: 1812
+   - 
+      name: add-server
+      label: "Add a server resource"
+      description: "Option to add a server entity explicity and be managed by the stylebook"
+      type: boolean
+      default: true
+      gui:
+        hidden: true
+   -
+      name: weight
+      label: "Weight"
+      description: "Weight of the service that is bound to the servicegroup"
+      type: number
+      min-value: 1
