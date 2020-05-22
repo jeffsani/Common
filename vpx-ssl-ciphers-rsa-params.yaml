@@ -1,5 +1,5 @@
 --- 
-name: vpx-ssl-ciphers-params
+name: vpx-ssl-ciphers
 namespace: com.citrix.adc.commontypes
 version: "1.0"
 description: "This stylebook contains all ciphers supported on a VPX platform"
@@ -71,14 +71,14 @@ parameters:
         - TLS1.2-ECDHE-ECDSACHACHA20-POLY1305
         - TLS1.3-AES128_GCM-SHA256
         - TLS1.3-CHACHA20-POLY1305-SHA256
-      default-values:
-        - TLS1.3-AES128-GCM-SHA256
+      default:
+        - TLS1.3-CHACHA20-POLY1305-SHA256
         - TLS1.3-AES256-GCM-SHA384
+        - TLS1.3-AES128-GCM-SHA256
+        - TLS1.2-ECDHE-ECDSA-CHACHA20-POLY1305
         - TLS1.2-ECDHE-ECDSA-AES256-SHA384
         - TLS1.2-ECDHE-ECDSA-AES256-GCM-SHA384
-        - TLS1.2-DHE-RSA-AES256-GCM-SHA384
         - TLS1.2-ECDHE-ECDSA-AES128-GCM-SHA256
-        - TLS1.2-ECDHE-RSA-CHACHA20-POLY1305
-        - TLS1.2-ECDHE-ECDSA-CHACHA20-POLY1305
+        - TLS1.2-ECDHE-RSA-CHACHA20-POLY1305 
         - TLS1.2-ECDHE-RSA-AES256-GCM-SHA384
-       required: true
+        - TLS1.2-DHE-RSA-AES256-GCM-SHA384
