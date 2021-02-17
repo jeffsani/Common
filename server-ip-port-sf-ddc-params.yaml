@@ -1,5 +1,5 @@
 --- 
-name: server-ip-port-params
+name: server-ip-port-sf-ddc-params
 namespace: com.citrix.adc.commontypes
 version: "1.0"
 description: "This stylebook defines a typical server ip port information."
