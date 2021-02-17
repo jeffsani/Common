@@ -1,4 +1,4 @@
-name: cipherlist-selector
+name: ciphers-per-platform
 namespace: stylebooks.security.ciphers
 version: "1.0"
 display-name: CipherList Selector
