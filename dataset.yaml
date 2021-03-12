@@ -1,0 +1,62 @@
+---
+name: ip_list
+version: "1.0"
+namespace: com.One2Any.stylebooks
+display-name: "IP Address List"
+description: "List of IP Addresses using dataset."
+schema-version: "1.0"
+author: "R. Davis"
+
+# Notes:
+# MAR 2020
+
+import-stylebooks:
+  -
+    namespace: netscaler.nitro.config
+    version: "11.0"
+    prefix: ns
+parameters:
+  -
+    name: dataset
+    key: true
+    type: string
+    label: Label
+    description: |
+      Name of the application configuration.
+      This is a mandatory argument.  Maximum Length: 127 
+    pattern: "^[A-z_][ A-z0-9_#.:@=-]+"
+    required: true
+  -
+    name: comment
+    type: string
+    label: Purpose of the paternset/dataset
+    default: Managed by ADM Stylebooks.  
+    max-length: 255
+    required: true
+  -
+    name: ipaddr
+    label: IP Addresses
+    type: ipaddress[]
+    description: Supply the source IP address for the first address in a range.
+components:
+  -
+    name: policydataset-ip-comp
+    type: ns::policydataset
+    properties:
+      name: $parameters.dataset + "_IP_Range"
+      type: ipv4
+      indextype?: Auto-generated
+      comment: $parameters.comment
+    #Ref: https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/12.0/configuration/policy/policydataset/
+    components:
+      -
+        name: policydataset_value_binding-comp
+        type: ns::policydataset_value_binding
+        repeat: 
+          repeat-list: $parameters.ipaddr
+          repeat-item: ipaddr
+        properties:
+          value: str($ipaddr)
+          name: $parameters.dataset + "_IP_Range"
+        #  index?:
+        #Ref: https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/12.0/configuration/policy/policydataset_value_binding/  

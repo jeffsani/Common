@@ -1,0 +1,82 @@
+---
+name: ip_ranges
+version: "1.0"
+namespace: com.One2Any.stylebooks
+display-name: "IP Address Range List"
+description: "List of IP Address Ranges using dataset. Required NteScaler v13+"
+schema-version: "1.0"
+author: "R. Davis"
+
+# Notes:
+# MAR 2020
+
+import-stylebooks:
+  -
+    namespace: netscaler.nitro.config
+    version: "13.0"
+    prefix: ns
+parameters:
+  -
+    name: dataset
+    key: true
+    type: string
+    label: Label
+    description: |
+      Name of the application configuration.
+      This is a mandatory argument.  Maximum Length: 127 
+    pattern: "^[A-z_][ A-z0-9_#.:@=-]+"
+    required: true
+  -
+    name: comment
+    type: string
+    label: Purpsoe of the paternset/dataset
+    default: Managed by ADM Stylebooks.  Maintains lists of User Agents and IP Addresses for whitelist/blacklist operations using both dataset and datasets
+    max-length: 255
+    required: true
+  -
+    name: ip
+    label: IP Addresses
+    type: object[]
+    parameters:
+      -
+        name: ipaddr
+        type: ipaddress
+        label: Source IP Address
+        description: Supply the source IP address for the first address in a range.
+        required: true
+      -
+        name: endrange
+        type: ipaddress
+        label: Last IP in source range (optional)
+        required: false  
+      -
+        name: comment
+        type: string
+        label: Ticket Number
+        description: |
+          Supply a ticket, change control number, or description.
+        required: false 
+components:
+  -
+    name: policydataset-ip-comp
+    type: ns::policydataset
+    properties:
+      name: $parameters.dataset + "_IP_Range"
+      type: ipv4
+      indextype?: Auto-generated
+      comment: $parameters.comment
+    #Ref: https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/12.0/configuration/policy/policydataset/
+    components:
+      -
+        name: policydataset_value_binding-comp
+        type: ns::policydataset_value_binding
+        repeat: 
+          repeat-list: $parameters.ip
+          repeat-item: ip
+        properties:
+          value: str($ip.ipaddr)
+          name: $parameters.dataset + "_IP_Range"
+          comment?: $ip.comment
+          endRange?: str($ip.endrange)
+        #  index?:
+        #Ref: https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/12.0/configuration/policy/policydataset_value_binding/  
